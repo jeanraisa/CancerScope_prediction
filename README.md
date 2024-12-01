@@ -86,6 +86,7 @@ To use the notebook:
 Open `notebook/cancerScope_prediction.ipynb` .
 
 # Deployment Link
-[here](https://youtu.be/XKQeGxQq2R4?si=M1JUUzIPq0lyJjE4)
+
 
 # Video Demo
+[here](https://youtu.be/XKQeGxQq2R4?si=M1JUUzIPq0lyJjE4)
