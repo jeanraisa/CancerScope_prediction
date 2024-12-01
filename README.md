@@ -16,7 +16,7 @@ CancerScope Prediction is a machine learning project aimed at predicting whether
 
 # Project Structure
 
-CancerScope_prediction/ | | │── README.md │── notebook/ │ └── cancerScope_prediction.ipynb │── src/ │ ├── preprocessing.py │ ├── model.py │ └── prediction.py │── data/ │ ├── train/ │ └── test/ └── models/ ├── scaler.pkl └── cancer_prediction_model.h5
+CancerScope_prediction/ ├── README.md ├── notebook/ │ └── cancerScope_prediction.ipynb ├── src/ │ ├── preprocessing.py │ ├── model.py │ └── prediction.py ├── data/ │ ├── train/ │ └── test/ └── models/ ├── scaler.pkl └── cancer_prediction_model.h5
     
 # Installation
 
