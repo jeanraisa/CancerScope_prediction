@@ -8,6 +8,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from sklearn.preprocessing import StandardScaler
 import os
+import io
 import joblib
 import numpy as np
 from src.preprocessing import load_scaler, load_and_preprocess_data
@@ -122,6 +123,8 @@ async def retrain_model(file: UploadFile = File(...)):
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the Cancer Prediction API!"}
+
+
 
 # CORS Middleware
 origins = [
