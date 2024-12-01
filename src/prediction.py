@@ -80,5 +80,9 @@ if __name__ == "__main__":
     
     #predictions = predict(model, example_data)
     #print("Prediction (probability of cancer):", predictions[0][0])
+    scaler = joblib.load("models/scaler.pkl")
+    print(f"Scaler loaded successfully: {scaler}")
+    print(f"Scaler mean: {scaler.mean_}, Scale: {scaler.scale_}")
+
     prediction = predict(model, example_data)
     print(f"Prediction: {prediction}")
