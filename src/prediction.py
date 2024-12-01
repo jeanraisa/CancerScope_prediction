@@ -40,26 +40,26 @@ def load_scaler():
     return joblib.load(scaler_path)
 
 def predict(model, new_data):
-    try:
+    #try:
         # Load the scaler and scale the input data
-        scaler = load_scaler()  # Ensure this function loads the fitted scaler
-        new_data_scaled = scaler.transform(new_data)
+        #scaler = load_scaler()  # Ensure this function loads the fitted scaler
+        #new_data_scaled = scaler.transform(new_data)
 
         # Use the model to predict probabilities
-        probability = model.predict(new_data_scaled)[0][0]
+        #probability = model.predict(new_data_scaled)[0][0]
 
         # Convert probability to binary prediction (0 or 1) using a threshold of 0.5
-        prediction = 1 if probability >= 0.5 else 0
+        #prediction = 1 if probability >= 0.5 else 0
 
-        return {"prediction": prediction, "probability": float(probability)}
+        #return {"prediction": prediction, "probability": float(probability)}
 
-    except Exception as e:
-        raise ValueError(f"Error during prediction: {str(e)}")
-    #scaler = load_scaler()
-    #new_data_scaled = scaler.transform(new_data)
-    #probability = model.predict(new_data_scaled)[0][0]
-    #prediction = 1 if probability >= 0.5 else 0
-    #return prediction
+    #except Exception as e:
+        #raise ValueError(f"Error during prediction: {str(e)}")
+    scaler = load_scaler()
+    new_data_scaled = scaler.transform(new_data)
+    probability = model.predict(new_data_scaled)[0][0]
+    prediction = 1 if probability >= 0.5 else 0
+    return prediction
     #return model.predict(new_data_scaled)
 
 if __name__ == "__main__":
