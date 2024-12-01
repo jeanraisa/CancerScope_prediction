@@ -40,27 +40,40 @@ def load_scaler():
     return joblib.load(scaler_path)
 
 def predict(model, new_data):
-    #try:
-        # Load the scaler and scale the input data
-        #scaler = load_scaler()  # Ensure this function loads the fitted scaler
-        #new_data_scaled = scaler.transform(new_data)
+    """
+    Make predictions using the trained model.
 
-        # Use the model to predict probabilities
-        #probability = model.predict(new_data_scaled)[0][0]
+    Args:
+    model (keras.models.Model): Trained model.
+    new_data (pd.DataFrame): New data for prediction.
 
-        # Convert probability to binary prediction (0 or 1) using a threshold of 0.5
-        #prediction = 1 if probability >= 0.5 else 0
+    Returns:
+    dict: Contains the prediction and probability.
+    """
+    try:
+        scaler_path = "../models/scaler.pkl"
+        print(f"Loading scaler from: {os.path.abspath(scaler_path)}")
+        
+        # Load the scaler
+        scaler = joblib.load("../models/scaler.pkl")
+        print(f"Loaded Scaler: Mean = {getattr(scaler, 'mean_', None)}, Scale = {getattr(scaler, 'scale_', None)}")
+        
+        #print(f"Scaler loaded successfully: {scaler}")
+        #print(f"Scaler mean: {scaler.mean_}")
+        #print(f"Scaler scale: {scaler.scale_}")
 
-        #return {"prediction": prediction, "probability": float(probability)}
+        # Scale the input data
+        new_data_scaled = scaler.transform(new_data)
 
-    #except Exception as e:
-        #raise ValueError(f"Error during prediction: {str(e)}")
-    scaler = load_scaler()
-    new_data_scaled = scaler.transform(new_data)
-    probability = model.predict(new_data_scaled)[0][0]
-    prediction = 1 if probability >= 0.5 else 0
-    return prediction
-    #return model.predict(new_data_scaled)
+        # Predict probabilities
+        probability = model.predict(new_data_scaled)[0][0]
+
+        # Convert probability to binary prediction (0 or 1)
+        prediction = 1 if probability >= 0.5 else 0
+
+        return {"prediction": prediction, "probability": probability}
+    except Exception as e:
+        raise ValueError(f"Error during prediction: {e}")
 
 if __name__ == "__main__":
     # Example usage
@@ -80,7 +93,7 @@ if __name__ == "__main__":
     
     #predictions = predict(model, example_data)
     #print("Prediction (probability of cancer):", predictions[0][0])
-    scaler = joblib.load("models/scaler.pkl")
+    scaler = joblib.load("../models/scaler.pkl")
     print(f"Scaler loaded successfully: {scaler}")
     print(f"Scaler mean: {scaler.mean_}, Scale: {scaler.scale_}")
 
