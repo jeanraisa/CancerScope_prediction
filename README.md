@@ -16,6 +16,7 @@ CancerHistory: Binary values indicating whether the patient has a personal histo
 Diagnosis: Binary values indicating the cancer diagnosis status, where 0 indicates No Cancer and 1 indicates Cancer.
 
 # Project structure
+
 CancerScope_Prediction/
 |
 |
@@ -32,6 +33,7 @@ CancerScope_Prediction/
 └── models/
     ├── scaler.pkl
     └── cancer_prediction_model.h5
+
 
 # Installation
 1. Ensure you have Python 3.7+ installed.
@@ -61,6 +63,7 @@ evaluate_model(model, X_test, y_test): Evaluates the trained model on test data.
 plot_training_history(history): Plots the training and validation accuracy/loss.
 
 To train the model:
+
 python src/model.py
 
 # Model  Prediction
@@ -70,22 +73,27 @@ load_trained_model(model_path): Loads the trained model from a file.
 predict(model, new_data): Makes predictions using the trained model.
 
 To run predictions:
+
 python -m src.prediction
 
 # Model Files
 Pickle (.pkl) file:
 
 Location: models/scaler.pkl
+
 Purpose: Stores the fitted StandardScaler  feature scaling.
 
 TensorFlow (.h5) file:
 
 Location: models/cancer_prediction_model.h5
+
 Purpose: Stores the trained Keras model.
 
 # Notebook
-The Jupyter notebook notebook/cancerScope_prediction.ipynb provides an interactive environment for data analysis, model training, and result visualization. 
+The Jupyter notebook notebook/cancerScope_prediction.ipynb provides an interactive environment for data analysis, model training, and result visualization.
+
 To use the notebook:
+
 Open notebook/CancerScope_prediction.ipynb
 
 # Deployment link 
