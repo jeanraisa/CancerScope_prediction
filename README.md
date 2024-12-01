@@ -38,11 +38,13 @@ CancerScope_Prediction/
 # Installation
 1. Ensure you have Python 3.7+ installed.
 2. Clone the repository:
-  git clone https://github.com/jeanraisa/CancerScope_prediction.git
-  cd cancerScope_prediction
+   git clone https://github.com/jeanraisa/CancerScope_prediction.git
+   cd cancerScope_prediction
+   
 
-3. Install required dependencies:
-  pip install -r requirements.txt
+4. Install required dependencies:
+   
+    pip install -r requirements.txt
 
 # Preprocessing
 The data preprocessing steps are implemented as Python functions in the preprocessing.py
@@ -52,7 +54,8 @@ The src/preprocessing.py file contains the following main functions:
 2. load_scaler(): Loads the saved StandardScaler features.
 
 To run preprocessing:
-python preprocessing.py
+
+   python preprocessing.py
 
 # Model Training
 The src/model.py file contains the following main functions:
@@ -64,7 +67,7 @@ plot_training_history(history): Plots the training and validation accuracy/loss.
 
 To train the model:
 
-python src/model.py
+  python src/model.py
 
 # Model  Prediction
 The src/prediction.py file contains the following main functions:
@@ -74,7 +77,7 @@ predict(model, new_data): Makes predictions using the trained model.
 
 To run predictions:
 
-python -m src.prediction
+  python -m src.prediction
 
 # Model Files
 Pickle (.pkl) file:
