@@ -23,57 +23,68 @@ CancerScope_prediction/ ├── README.md ├── notebook/ │ └── ca
 1. Ensure you have Python 3.7+ installed.
 
 2. Clone this repository:
-    `git clone https://github.com/jeanraisa/CancerScope_prediction.git
-    cd cancerScope_prediction`
+    `git clone https://github.com/jeanraisa/CancerScope_prediction.git`
+    `cd cancerScope_prediction`
 
 3. Install required libraries:
 
     `pip install -r requirements.txt`
 
 # Preprocessing Steps
-The src/preprocessing.py file contains the following main functions:
 
-load_and_preprocess_data(file_path): Loads the CSV file, splits features and target, scales the features using StandardScaler, and saves the scaler.
-load_scaler(): Loads the saved StandardScaler object.
+The `src/preprocessing.py` file contains the following main functions:
+
+`load_and_prep``rocess_data(file_path)`: Loads the CSV file, splits features and target, scales the features using StandardScaler, and saves the scaler.
+
+`load_scaler()`: Loads the saved StandardScaler features.
 
 To run preprocessing:
 
 `python src/preprocessing.py`
 
-Model Training
-The src/model.py file contains the following main functions:
+# Model Training
 
-create_model(): Creates and compiles the  model.
+The `src/model.py` file contains the following main functions:
 
-train_model(X_train, y_train, batch_size=32): Trains the model with early stopping.
-evaluate_model(model, X_test, y_test): Evaluates the trained model on test data.
-plot_training_history(history): Plots the training and validation accuracy/loss.
+* `create_model()`: Creates and compiles the  model.
+
+* `train_model(X_train, y_train, batch_size=32)`: Trains the model with early stopping.
+* `evaluate_model(model, X_test, y_test)`: Evaluates the trained model on test data.
+* `plot_training_history(history)`: Plots the training and validation accuracy/loss.
 
 To train the model:
 
 `python src/model.py`
 
-Model Testing and Prediction
+# Model Testing and Prediction
+
 The src/prediction.py file contains the following main functions:
 
-load_trained_model(model_path): Loads the trained model from a file.
-predict(model, new_data): Makes predictions using the trained model.
+* `load_trained_model(model_path)`: Loads the trained model from a file.
+* `predict(model, new_data)`: Makes predictions using the trained model.
 
 To run predictions:
 
-`python src/prediction.py`
+`python -m src.prediction`
 
-Model Files
+# Model Files
+
 Pickle (.pkl) file:
-models/scaler.pkl
+
+`models/scaler.pkl`
 
 TensorFlow (.h5) file:
 
-models/cancer_prediction_model.h5
+`models/cancer_prediction_model.h5`
 
 
-Notebook
+# Notebook
+
 The Jupyter notebook notebook/cancerScope_prediction.ipynb provides data analysis, model training, and result visualization. 
 
 To use the notebook:
-Open notebook/cancerScope_prediction.ipynb from the Jupyter interface.
+Open `notebook/cancerScope_prediction.ipynb` .
+
+# Deployment Link
+
+# Video Demo
