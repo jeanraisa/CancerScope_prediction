@@ -20,11 +20,14 @@ def load_and_preprocess_data(file_path):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
     X_df = pd.DataFrame(X_scaled, columns=X.columns)
+    os.makedirs("models", exist_ok=True)
+    joblib.dump(scaler, "models/scaler.pkl")
+    print("Scaler fitted and saved to models/scaler.pkl")
     
     # Save the scaler
-    if not os.path.exists('../models'):
-        os.makedirs('../models')
-    joblib.dump(scaler, '../models/scaler.pkl')
+    #if not os.path.exists('../models'):
+        #os.makedirs('../models')
+    #joblib.dump(scaler, '../models/scaler.pkl')
     
     return X_df, y
 
