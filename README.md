@@ -86,7 +86,7 @@ To use the notebook:
 Open `notebook/cancerScope_prediction.ipynb` .
 
 # Deployment Link
-
+[here](https://cancerscope-prediction.onrender.com/docs)
 
 # Video Demo
 [here](https://youtu.be/XKQeGxQq2R4?si=M1JUUzIPq0lyJjE4)
