@@ -32,8 +32,8 @@ class PredictionInput(BaseModel):
 
 # Get the absolute path to the models directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "models", "cancer_prediction_model.h5")
-SCALER_PATH = os.path.join(BASE_DIR, "models", "scaler.pkl")
+MODEL_PATH = os.path.join(BASE_DIR, "../models", "cancer_prediction_model.h5")
+SCALER_PATH = os.path.join(BASE_DIR, "../models", "scaler.pkl")
 
 # Prediction endpoint
 @app.post("/predict/")
@@ -45,9 +45,9 @@ async def make_prediction(input_data: PredictionInput):
         input_df['AlcoholIntake'] = input_df['AlcoholIntake'].clip(upper=5)
 
         # Load the trained model
-        model = load_trained_model(MODEL_PATH)  # Ensure this returns the actual model, not the path
+        model = load_trained_model(MODEL_PATH)  
         # Load the scaler
-        scaler = load_scaler(SCALER_PATH)  # Ensure the scaler is loaded and fitted
+        scaler = load_scaler(SCALER_PATH)  
         
         # Scale the input data
         input_df_scaled = scaler.transform(input_df)
@@ -89,7 +89,7 @@ async def retrain_model(file: UploadFile = File(...)):
         model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
         
         # Save the retrained model
-        os.makedirs('models', exist_ok=True)
+        os.makedirs('../models', exist_ok=True)
         model.save(MODEL_PATH)
         
         # Save the scaler (after retraining)
