@@ -1,9 +1,7 @@
 import pandas as pd
 import joblib
 import os
-import sys
 from keras.models import load_model
-
 
 def load_trained_model(model_path='../models/cancer_prediction_model.h5'):
     # Ensure the model path is absolute
@@ -15,9 +13,9 @@ def load_trained_model(model_path='../models/cancer_prediction_model.h5'):
 
     return load_model(model_path)
 
-def load_scaler():
+def load_scaler(scaler_path='../models/scaler.pkl'):
     # Ensure the scaler path is absolute
-    scaler_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../models/scaler.pkl")
+    scaler_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), scaler_path)
     
     if not os.path.exists(scaler_path):
         raise FileNotFoundError(f"Scaler file not found at path: {scaler_path}")
@@ -46,7 +44,7 @@ def predict(model, new_data):
     """
     try:
         # Load the scaler once
-        scaler = load_scaler()
+        scaler = load_scaler()  # Now we can load the scaler with or without an argument
 
         # Scale the input data
         new_data_scaled = scaler.transform(new_data)
@@ -66,7 +64,7 @@ if __name__ == "__main__":
     # Load the trained model
     model = load_trained_model()
 
-    # Example data (replace this with your actual new data)
+    # Example input data
     example_data = pd.DataFrame({
         'Age': [60],
         'Gender': [0],
@@ -78,6 +76,9 @@ if __name__ == "__main__":
         'CancerHistory': [0]
     })
 
-    # Predict with the model
-    prediction = predict(model, example_data)
-    print(f"Prediction: {prediction}")
+    # Log example data
+    print(f"Example input data:\n{example_data}")
+
+    # Make a prediction
+    result = predict(model, example_data)
+    print(f"Prediction result:\n{result}")
