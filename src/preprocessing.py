@@ -2,7 +2,6 @@
 
 import os
 import pandas as pd
-from sklearn import preprocessing
 from sklearn.preprocessing import  StandardScaler
 import joblib
 
@@ -21,8 +20,9 @@ def load_and_preprocess_data(file_path):
     X_scaled = scaler.fit_transform(X)
     print(f"Fitting Scaler: Mean = {scaler.mean_}, Scale = {scaler.scale_}")
     os.makedirs("../models", exist_ok=True)
-    joblib.dump(scaler, "../models/scaler.pkl")
-    print("Scaler fitted and saved to models/scaler.pkl")
+    scaler_path = "../models/scaler.pkl"
+    joblib.dump(scaler, scaler_path)
+    print(f"Scaler fitted and saved to {scaler_path}")
     
     return X_scaled, y
 

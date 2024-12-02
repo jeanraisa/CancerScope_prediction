@@ -4,8 +4,6 @@ import os
 import sys
 from keras.models import load_model
 
-# Ensure that the current directory is part of the system path
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 def load_trained_model(model_path='../models/cancer_prediction_model.h5'):
     # Ensure the model path is absolute
