@@ -105,13 +105,13 @@ async def retrain_model(file: UploadFile = File(...)):
         model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
         
         # Save the retrained model
-        model_path = "models/cancer_prediction_model.h5"
-        if not os.path.exists('models'):
-            os.makedirs('models')
+        model_path = "../models/cancer_prediction_model.h5"
+        if not os.path.exists('../models'):
+            os.makedirs('../models')
         model.save(model_path)
         
         # Save the scaler (if it has been modified)
-        scaler_path = "models/scaler.pkl"
+        scaler_path = "../models/scaler.pkl"
         joblib.dump(StandardScaler(), scaler_path)
         
         return {"message": "Model retrained successfully and saved."}

@@ -66,7 +66,7 @@ def predict(model, new_data):
         new_data_scaled = scaler.transform(new_data)
 
         # Predict probabilities
-        probability = model.predict(new_data_scaled)[0][0]
+        probability = float(model.predict(new_data_scaled)[0][0])
 
         # Convert probability to binary prediction (0 or 1)
         prediction = 1 if probability >= 0.5 else 0
